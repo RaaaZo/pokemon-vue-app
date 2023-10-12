@@ -1,9 +1,7 @@
 <template>
-  <PokemonCardsList />
+  <p>Home Page</p>
 </template>
 
-<script setup lang="ts">
-import PokemonCardsList from '@/components/PokemonCardsList.vue'
-</script>
+<script setup lang="ts"></script>
 
 <style scoped></style>

@@ -1,10 +1,6 @@
 <template>
   <div :class="$style[`card-wrapper`]">
-    <img
-      src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
-      alt=""
-      :class="$style[`card-image`]"
-    />
+    <img :src="props.pokemon.img" alt="" :class="$style[`card-image`]" />
     <section :class="$style[`card-inner-wrapper`]">
       <h2 class="text-xxl">{{ props.pokemon.name }}</h2>
       <p class="text--lg">#{{ props.pokemon.id }}</p>
