@@ -1,4 +1,29 @@
-@import url('./base.css');
+:root {
+  --font-primary: sans-serif;
+  --font-secondary: serif;
+  --primary-dark: #023047;
+  --primary: #219ebc;
+  --primary-light: #8ecae6;
+  --accent: #ffb703;
+  --white: #f0f0f0;
+  --black: #111111;
+
+  /* Font sizes */
+  --text-xs: 1.2rem;
+  --text-sm: 1.4rem;
+  --text-md: 1.6rem;
+  --text-lg: 1.8rem;
+  --text-xl: 2rem;
+  --text-xxl: 2.4rem;
+  --text-xxxl: 3.2rem;
+
+  /* Font line height */
+  --line-height-xs: 1.2;
+  --line-height-sm: 1.4;
+  --line-height-md: 1.6;
+  --line-height-lg: 1.8;
+  --line-height-xl: 2;
+}
 
 html {
   line-height: 1.15; /* 1 */
@@ -13,6 +38,9 @@ html {
 body {
   margin: 0;
   font-size: 1.6rem;
+  background-color: var(--white);
+  font-family: var(--font-primary);
+  color: var(--black);
 }
 
 /**
@@ -339,4 +367,42 @@ template {
 
 [hidden] {
   display: none;
+}
+
+/* Typography */
+
+.text--xxl {
+  font-size: var(--text-xxxl);
+  line-height: var(--line-height-xl);
+}
+
+.text--xl {
+  font-size: var(--text-xl);
+  line-height: var(--line-height-xl);
+}
+
+.text--lg {
+  font-size: var(--text-lg);
+  line-height: var(--line-height-lg);
+}
+
+.text--md {
+  font-size: var(--text-md);
+  line-height: var(--line-height-md);
+}
+
+.text--sm,
+small {
+  font-size: var(--text-sm);
+  line-height: var(--line-height-sm);
+}
+
+.text--xs {
+  font-size: var(--text-xs);
+  line-height: var(--line-height-xs);
+}
+
+p {
+  font-size: var(--text-md);
+  line-height: var(--line-height-md);
 }
