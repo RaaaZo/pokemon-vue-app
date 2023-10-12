@@ -1,20 +1,30 @@
 <template>
-  <nav class="nav">
-    <div class="logo-wrapper">
+  <nav :class="$style.nav">
+    <div :class="$style[`logo-wrapper`]">
       <RouterLink :to="HOME_PAGE_ROUTE">
         <LogoComponent />
       </RouterLink>
     </div>
 
-    <ul class="navigation-list">
-      <li class="list-item" v-for="linkItem in linksList" :key="linkItem.name">
+    <ul :class="$style[`navigation-list`]">
+      <li
+        :class="$style[`list-item`]"
+        class="text--xxl"
+        v-for="linkItem in linksList"
+        :key="linkItem.name"
+      >
         <RouterLink :to="linkItem.route">{{ linkItem.name }}</RouterLink>
       </li>
     </ul>
   </nav>
-  <main class="page-wrapper">
+
+  <main :class="$style[`page-wrapper`]">
     <RouterView />
   </main>
+
+  <footer :class="$style.footer">
+    <p class="text--sm">Made with 🖤 by <a href="https://github.com/RaaaZo">RaaaZo</a></p>
+  </footer>
 </template>
 
 <script setup lang="ts">
@@ -34,13 +44,12 @@ const linksList = [
 ]
 </script>
 
-<style scoped>
+<style module>
 .nav {
-  height: 6.4rem;
+  height: 9rem;
   display: flex;
   align-items: center;
   padding-inline: 3.2rem;
-  padding-block: 1.6rem;
   background-color: var(--accent);
   border-bottom-left-radius: 1.6rem;
   border-bottom-right-radius: 1.6rem;
@@ -61,18 +70,36 @@ const linksList = [
   gap: 3.2rem;
 }
 
-.list-item > a {
-  font-size: 3.2rem;
-  font-weight: 700;
-  line-height: 1.5;
-  letter-spacing: 0.00938em;
-  color: var(--black);
-  text-decoration: none;
+.list-item {
   cursor: pointer;
+
+  & > a {
+    color: var(--black);
+    text-decoration: none;
+    padding: 0.8rem 1.6rem;
+  }
 }
 
 .page-wrapper {
-  padding: 3.2rem;
-  min-height: calc(100vh - 6.4rem);
+  padding-inline: 3.2rem;
+  /* 100vh - height of navbar and footer */
+  min-height: calc(100vh - 12.8rem);
+}
+
+.footer {
+  height: 3.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1.6rem;
+  background-color: var(--accent);
+  border-top-left-radius: 1.6rem;
+  border-top-right-radius: 1.6rem;
+
+  & * a {
+    color: var(--black);
+    text-decoration: none;
+    font-weight: var(--font-weight-bold);
+  }
 }
 </style>
