@@ -25,14 +25,14 @@ import CardSkeletonList from '@/components/CardSkeletonListComponent.vue'
 import PaginationComponentVue from '@/components/PaginationComponent.vue'
 import PokemonCard from '@/components/PokemonCard.vue'
 import { useFetchPokemonsList } from '@/composables/fetchPokemonsList'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 
 const url = ref(`https://pokeapi.co/api/v2/pokemon?limit=20&offset=0`)
 
 const { pokemonList, error, loading, nextPage, previousPage } = useFetchPokemonsList(url)
 
-const isNextButtonDisabled = !nextPage || !!error
-const isPrevButtonDisabled = !previousPage || !!error
+const isNextButtonDisabled = computed(() => !nextPage.value || !!error.value)
+const isPrevButtonDisabled = computed(() => !previousPage.value || !!error.value)
 
 const onUrlChange = (newUrl: string | null) => {
   if (!newUrl) return
@@ -54,6 +54,6 @@ const onUrlChange = (newUrl: string | null) => {
 }
 
 .section-wrapper {
-  padding-block: 3.2rem;
+  padding-block: 2.4rem;
 }
 </style>
