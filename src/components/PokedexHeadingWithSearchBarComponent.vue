@@ -18,15 +18,23 @@
 </template>
 
 <script setup lang="ts">
-import router from '@/router'
 import { ref } from 'vue'
 import { POKEMON_DETAIL_PAGE_ROUTE } from '@/router/constants'
+import { useRouter } from 'vue-router'
+import { replaceDynamicParamFromUrlWithReadableValue } from '@/utils/helpers/replaceDynamicParamFromUrlWithReadableValue'
+
+const router = useRouter()
 
 const pokemonName = ref('')
 
 const onSubmitHandler = () => {
   const transformedPokemonName = pokemonName.value.toLowerCase().trim()
-  const transformedUrl = POKEMON_DETAIL_PAGE_ROUTE.replace(':id', transformedPokemonName)
+  const transformedUrl = replaceDynamicParamFromUrlWithReadableValue(
+    POKEMON_DETAIL_PAGE_ROUTE,
+    'id',
+    transformedPokemonName
+  )
+
   router.push(transformedUrl)
 }
 </script>

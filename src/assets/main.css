@@ -98,12 +98,15 @@ pre {
 /* Text-level semantics
    ========================================================================== */
 
-/**
- * Remove the gray background on active links in IE 10.
- */
-
 a {
   background-color: transparent;
+  text-decoration: none;
+  color: var(--black);
+
+  &:focus {
+    outline-color: var(--primary);
+    border-radius: 1.6rem;
+  }
 }
 
 /**
