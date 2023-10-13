@@ -8,10 +8,10 @@
 
     <ul :class="$style[`navigation-list`]">
       <li
-        :class="$style[`list-item`]"
-        class="text--xxl"
         v-for="linkItem in linksList"
         :key="linkItem.name"
+        :class="$style[`list-item`]"
+        class="text--xxl"
       >
         <RouterLink :to="linkItem.route">{{ linkItem.name }}</RouterLink>
       </li>

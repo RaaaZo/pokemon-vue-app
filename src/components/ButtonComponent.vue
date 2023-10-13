@@ -1,6 +1,6 @@
 <template>
   <button
-    @click="props.onClickHandler"
+    @click="$emit('click')"
     :disabled="props.isDisabled"
     :class="$style.button"
     :type="props.type"
@@ -12,16 +12,18 @@
 <script setup lang="ts">
 const props = withDefaults(
   defineProps<{
-    onClickHandler: () => void
-    isDisabled: boolean
-    type: 'button' | 'submit' | 'reset'
+    isDisabled?: boolean
+    type?: 'button' | 'submit' | 'reset'
   }>(),
   {
-    onClickHandler: () => {},
     isDisabled: false,
     type: 'button'
   }
 )
+
+defineEmits<{
+  (event: 'click'): void
+}>()
 </script>
 
 <style module>

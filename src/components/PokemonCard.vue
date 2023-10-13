@@ -1,6 +1,10 @@
 <template>
   <div :class="$style[`card-wrapper`]">
-    <img :src="props.pokemon.img" alt="" :class="$style[`card-image`]" />
+    <img
+      :src="props.pokemon.img"
+      :alt="`${props.pokemon.name} avatar`"
+      :class="$style[`card-image`]"
+    />
     <section :class="$style[`card-inner-wrapper`]">
       <h2 class="text-xxl">{{ props.pokemon.name }}</h2>
       <p class="text--lg">#{{ props.pokemon.id }}</p>
@@ -38,7 +42,7 @@ const props = defineProps<{
 .card-image {
   width: 100%;
   max-width: 30rem;
-  height: auto;
+  height: 30rem;
   object-fit: contain;
   object-position: center;
 }

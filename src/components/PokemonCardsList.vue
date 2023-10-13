@@ -8,22 +8,17 @@
     <p v-if="error">{{ error }}</p>
     <p v-if="loading">Loading</p>
 
-    <section :class="$style[`pagination-wrapper`]">
-      <ButtonComponent
-        :on-click-handler="() => onUrlChange(previousPage)"
-        :disabled="!previousPage"
-      >
-        Previous
-      </ButtonComponent>
-      <ButtonComponent :on-click-handler="() => onUrlChange(nextPage)" :disabled="!nextPage">
-        Next
-      </ButtonComponent>
-    </section>
+    <PaginationComponentVue
+      :is-next-button-disabled="!nextPage"
+      :is-prev-button-disabled="!previousPage"
+      @on-next-button-click-handler="() => onUrlChange(nextPage)"
+      @on-prev-button-click-handler="() => onUrlChange(previousPage)"
+    />
   </section>
 </template>
 
 <script setup lang="ts">
-import ButtonComponent from '@/components/ButtonComponent.vue'
+import PaginationComponentVue from '@/components/PaginationComponent.vue'
 import PokemonCard from '@/components/PokemonCard.vue'
 import { useFetchPokemonsList } from '@/composables/fetchPokemonsList'
 import { ref } from 'vue'
@@ -53,11 +48,5 @@ const onUrlChange = (newUrl: string | null) => {
 
 .section-wrapper {
   padding-block: 3.2rem;
-}
-
-.pagination-wrapper {
-  display: flex;
-  justify-content: space-between;
-  margin-block-start: 3.2rem;
 }
 </style>
